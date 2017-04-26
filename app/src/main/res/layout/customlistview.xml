@@ -4,7 +4,7 @@
     android:orientation="horizontal"
     android:layout_width="wrap_content"
     android:layout_height="70dp"
-    android:weightSum="10"
+    android:weightSum="11"
     android:padding="10dp">
 
     <ImageView
@@ -42,6 +42,14 @@
             android:padding="3dp"
             android:gravity="center_vertical"
             android:text="TextView" />
+
     </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/cb"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:visibility="invisible"/>
 
 </LinearLayout>

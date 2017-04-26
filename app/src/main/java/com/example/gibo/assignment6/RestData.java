@@ -17,6 +17,8 @@ public class RestData implements Parcelable {
     private String hp;
     private String day;
     private String cate_num;
+    private boolean jud;
+    private boolean checked;
 
     public RestData(String name, String phone_num, String menu1, String menu2, String menu3,
                     String hp, String day, String cate_num){
@@ -28,6 +30,8 @@ public class RestData implements Parcelable {
         this.hp = hp;
         this.day = day;
         this.cate_num = cate_num;
+        this.jud = false;
+        this.checked = false;
     }
 
     protected RestData(Parcel in) {
@@ -57,9 +61,21 @@ public class RestData implements Parcelable {
 
     public String getCate_num() { return this.cate_num;}
 
+    public boolean getJud(){ return this.jud;}
+
+    public boolean getChecked(){ return this.checked;}
+
     public void setcate(String cate_num){
         this.cate_num = cate_num;
     }
+
+    public void setJud(){ this.jud = true;}
+
+    public void defalutJud(){ this.jud = false;}
+
+    public void setChecked(){ this.checked = true;}
+
+    public void defalutChecked(){ this.checked = false;}
 
     public static final Creator<RestData> CREATOR = new Creator<RestData>() {
         @Override

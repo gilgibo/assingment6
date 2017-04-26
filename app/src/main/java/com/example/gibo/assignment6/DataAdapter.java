@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,6 +25,7 @@ public class DataAdapter extends BaseAdapter {
 
     ArrayList<RestData> data;
     Context context;
+    Button btn;
 
     public DataAdapter(Context context,ArrayList<RestData> data){
         this.context = context;
@@ -51,13 +54,17 @@ public class DataAdapter extends BaseAdapter {
         if(convertView == null){
             convertView = LayoutInflater.from(context).inflate(R.layout.customlistview, null);
         }
+
         TextView tv1= (TextView)convertView.findViewById(R.id.tv1);
         TextView tv2= (TextView)convertView.findViewById(R.id.tv2);
         ImageView img = (ImageView)convertView.findViewById(R.id.img);
+        CheckBox cb = (CheckBox)convertView.findViewById(R.id.cb);
 
         RestData info = data.get(position);
+
         tv1.setText(info.getname());
         tv2.setText(info.getPhone_num());
+
         if(info.getCate_num().equals("1")){
             img.setImageResource(R.drawable.chicken);
         }
@@ -67,9 +74,18 @@ public class DataAdapter extends BaseAdapter {
         if(info.getCate_num().equals("3")){
             img.setImageResource(R.drawable.hamburger);
         }
+        if(info.getJud())
+            cb.setVisibility(View.VISIBLE);
+        if(!info.getJud())
+            cb.setVisibility(View.INVISIBLE);
+        if(cb.isChecked())
+            info.setChecked();
 
         return convertView;
     }
+
+
+
 
     Comparator<RestData> nameAsc = new Comparator<RestData>() {
         @Override
